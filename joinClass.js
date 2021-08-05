@@ -104,7 +104,6 @@ let lectur = [
 ];
 
 
-
 function updateTable() {
     let lectureNo = getClassNo();
     let day = getDay();
