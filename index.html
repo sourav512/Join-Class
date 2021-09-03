@@ -2,63 +2,93 @@
 <html lang="en">
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css">
     <title>Join Class</title>
-     
+    
   </head>
   <body>
-    <div class="center">
-    <div class="border" style="width: fit-content;padding: 10px">
-
-      <div class="center">
-        <h2 style="color: rgb(3, 109, 74);">Welcome to Join Class</h2>
-      </div>
-      <div class="center" >
-        <div id="off" style="width: fit-content;display: none;background-color: aquamarine; padding: 10px 5px; border-radius: 10px; font-weight: 600; font-size: 20px;color: rgb(3, 109, 74);">
-          <p id="data">
-            
-        </p>
-      </div>
-      
+<h1 class="heading">Join Class</h1>
+<p style="margin-top: 0px;margin-left: 10px;font-size: 10px;color: #8e8d8a;">Create your class for getting automatic link</p>
+<hr>
+<div style="display: flex;flex-direction: column;" id="mainContent">
+  
+  <div style="display: flex;justify-content: space-evenly;float: inline-end;flex-wrap: wrap;">
+    <div>
+      <p class="subHeadding">Your class details</p>
+      <button class="button" id="joinBtn">Join Class</button>
     </div>
-    <div class="center" id="table">
+    <div id="off" style="width: fit-content;display: none;background-color: #e85a4f; padding: 10px 5px; border-radius: 10px; font-weight: 600; font-size: 20px;color: #eae7dc;">
+      <p id="data">
+        
+      </p>
+    </div>
+    <div id="table">
       <table>
-        <thead>
-          <tr>
-            <th colspan="2">Class Details</th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
-            <td>Lecture</td>
-            <td id="lecName">Teacher's Name</td>
+            <td class="dataHead">Lecture</td>
+            <td id="lecName" class="dataTail">Teacher's Name</td>
           </tr>
           <tr>
-            <td>Teacher</td>
-            <td id="teacherName">Teacher's Name</td>
+            <td class="dataHead">Teacher</td>
+            <td id="teacherName" class="dataTail">Teacher's Name</td>
           </tr>
           <tr>
-            <td>Next Lecture</td>
-            <td id="next">Teacher's Name</td>
+            <td class="dataHead">Next Lecture</td>
+            <td id="next" class="dataTail">No Class</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <br />
-    <div class="center">
-      <button class="button" id="joinBtn"><b>JOIN CLASS</b></button>
+  </div>
+  <hr>
+  <div  style="display: flex;justify-content: space-evenly;float: inline-end;flex-wrap: wrap;">
+    <div  style="align-self: center;justify-content: center;">  
+      <p class="subHeadding">Your TimeTable</p>
     </div>
-    <div align="right">
-      <h6 style="font-size: 6px;">*Only for CSE-5B6/1</h6>
+    <div style="overflow-x:auto;">  
+      <table style="text-align: center;display: block;">
+        <thead>
+          <tr>
+            <th style="background-color: #eae7dc;"></th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+          </tr>
+        </thead>
+        <tbody id="timeTable">
+          
+        </tbody>
+      </table>
     </div>
   </div>
-  </div>
-    <script src="./joinClass.js"></script>
-  </body>
-  </html>
-  
+</div>
+<div id="form">
+  <h3 style="color: #e85a4f;margin-bottom: 0px;">Create table by entering data</h3>
+  <p style="color: #8e8d8a;margin-top: 0px;font-size: 12px;">36 data set required</p>
+  <form style="display: flex; justify-content: center;flex-direction: column;align-items: center;">
+
+      <input type="text" name="Subject Name" id="subject" placeholder="Subject Name" required autofocus>
+      <input type="text" name="Teacher Name" id="teacherNameInput" placeholder="Teacher Name" required>
+      <input type="text" name="Subject ID" id="lectureID" placeholder="Subject ID" required>
+      <input class="button"type="button" onclick="validate()" value="Next">
+  </form>
+  <ul>
+    <li>Subject Name must be greater than 2 and less than 9 character</li>
+    <li>Teacher Name must be greater than 2 and less than 15 character</li>
+    <li>Subject Name must be 10 character</li>
+    <li>All 36 data set are required*</li>
+  </ul>
+</div>
+<hr>
+<script src="./joinClass.js"></script>
+</body>
+</html>

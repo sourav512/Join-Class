@@ -1,163 +1,163 @@
-console.log("Hello world this is join class");
-function getClassNo() {
-  let time = new Date();
-  let hr = time.getHours();
-  let min = time.getMinutes();
-  let timeFrom12 = (hr*60)+min;
-
-  if (timeFrom12>=990) {
-    return 8;
-  }
-  if (timeFrom12>=930) {
-    return 5;
-  }
-  if (timeFrom12>=870) {
-    return 4;
-  }
-  if (timeFrom12>=855) {
-    return 9;
-  }
-  if (timeFrom12>=795) {
-    return 3;
-  }
-  if (timeFrom12>=735) {
-    return 2;
-  }
-  if (timeFrom12>=690) {
-    return 9; //break time
-  }
-  if (timeFrom12>=630) {
-    return 1;
-  }
-  if (timeFrom12>=570) {
-    return 0;
-  }
-  return 8;
-}
-function getDay() {
-  let day = new Date();
-  return day.getDay() - 1;
-}
-let teacherLink = {
-  PR: "https://meet.google.com/zwb-mzzv-pec",
-  NPP: "https://meet.google.com/rcd-jnzi-znj",
-  YP: "https://meet.google.com/zdo-fygc-hzq",
-  SBP: "https://meet.google.com/xrt-uohs-two",
-  VK: "https://meet.google.com/giu-mwsd-jux",
-  APK: "https://meet.google.com/ddq-wmzx-izg",
-  SR: "https://meet.google.com/ppe-wwhr-txa",
-  MDP: "https://meet.google.com/pce-ykvu-ctx",
-  SP: "https://meet.google.com/fdh-qizj-fjw",
-  SV: "https://meet.google.com/qgo-nyss-cuk",
-  LIB: "",
-  WT: "",
-};
-let lectur = [
-  {
-    0: [teacherLink.LIB, "LIB", ""],
-    1: [teacherLink.PR, "DAA", "Pushpak Raval"],
-    2: [teacherLink.SBP, "FLAT", "Shyambabu Pandey"],
-    3: [teacherLink.SR, "OOPJ(Lecture)", "S.Raghupathi"],
-    4: [teacherLink.SR, "OOPJ(LAB)", "S.Raghupathi"],
-    5: [teacherLink.SR, "OOPJ(LAB)", "S.Raghupathi"],
-  },
-  {
-    0: [teacherLink.WT, "WT", ""],
-    1: [teacherLink.MDP, "DPP", "Monal Patel"],
-    2: [teacherLink.SV, "PSPE", "Shivanee"],
-    3: [teacherLink.SV, "PSPE", "Shivanee"],
-    4: [teacherLink.LIB, "LIB", ""],
-    5: [teacherLink.SR, "OOPJ(Lecture)", "S.Raghupathi"],
-  },
-  {
-    0: [teacherLink.SR, "OOPJ(Lecture)", "S.Raghupathi"],
-    1: [teacherLink.SP, "PSPE", "Snehal Kumar.."],
-    2: [teacherLink.NPP, "SE", "Nidhi Patel"],
-    3: [teacherLink.SBP, "FLAT", "Shyambabu Pandey"],
-    4: [teacherLink.PR, "DAA(LAB)", "Pushpak Raval"],
-    5: [teacherLink.PR, "DAA(LAB)", "Pushpak Raval"],
-  },
-  {
-    0: [teacherLink.SR, "OOPJ(LAB)", "S.Raghupathi"],
-    1: [teacherLink.SR, "OOPJ(LAB)", "S.Raghupathi"],
-    2: [teacherLink.PR, "DAA", "Pushpak Raval"],
-    3: [teacherLink.NPP, "SE", "Nidhi Patel"],
-    4: [teacherLink.LIB, "LIB", ""],
-    5: [teacherLink.LIB, "LIB", ""],
-  },
-  {
-    0: [teacherLink.APK, "IOE", "Aashish Kumar"],
-    1: [teacherLink.APK, "IOE", "Aashish Kumar"],
-    2: [teacherLink.LIB, "LIB", ""],
-    3: [teacherLink.LIB, "LIB", ""],
-    4: [teacherLink.PR, "DAA", "Pushpak Raval"],
-    5: [teacherLink.NPP, "SE", "Nidhi Patel"],
-  },
-  {
-    0: [teacherLink.VK, "IOE", "Vishwas Kumar"],
-    1: [teacherLink.VK, "IOE", "Vishwas Kumar"],
-    2: [teacherLink.YP, "SE(LAB)", "Yoothika Patel"],
-    3: [teacherLink.YP, "SE(LAB)", "Yoothika Patel"],
-    4: [teacherLink.SBP, "FLAT", "Shyambabu Pandey"],
-    5: [teacherLink.MDP, "DPP", "Monal Patel"],
-  },
-];
-
-
-function updateTable() {
-    let lectureNo = getClassNo();
-    let day = getDay();
-    console.log("running");
-
-    const lecName = document.getElementById("lecName");
-    const teacherName = document.getElementById("teacherName");
-    const next = document.getElementById("next");
-    const off = document.getElementById("off");
-    const data = document.getElementById("data");
-    if (lectureNo!=9 && lectureNo!=8 && day>=0&& lectur[day][lectureNo][1] != "LIB" && lectur[day][lectureNo][1] != "WT" ) 
-    {
-        lecName.innerText = lectur[day][lectureNo][1];
-        teacherName.innerText = lectur[day][lectureNo][2];
-        if (lectureNo+1<=5) {
-            
-            next.innerText = lectur[day][lectureNo+1][1];
-        }else{
-          next.innerText = "No Class";
-        }
-      }else{
-      joinBtn.style.display = "none";
-      table.style.display = "none";
-      off.style.display = "block";
-      if (day < 0) {
-          data.innerText = "Chill! It's Sunday."
-          return;
-      }
-      if (lectureNo == 9) {
-          data.innerText = "Have a kitkat break";
-          return;
-      }
-      if (lectureNo == 8) {
-          data.innerText = `NO CLASS...Yay`
-          return;
-      }
-      if (lectur[day][lectureNo][1] == "LIB") {
-          data.innerText = "Its Library next class will be of " + lectur[day][lectureNo+1][1];
-          return;
-      } else {
-          data.innerText = "You have a test now. \nThe next class will be of " + lectur[day][lectureNo+1][1];
-          return;
-      }
-  }
-
-}
-
-function getLink() {
-  let lectureNo = getClassNo();
-  let day = getDay();
-  location.replace(lectur[day][lectureNo][0]);
-}
+const LectureNameInput = document.getElementById("subject");
+const TeacherNameInput = document.getElementById("teacherNameInput");
+const LectureIdInput = document.getElementById("lectureID");
+const lectureNameCell = document.getElementById("lecName");
+const teacherNameCell = document.getElementById("teacherName");
+const nextLectureCell = document.getElementById("next");
+const noClassDiv = document.getElementById("off");
+const noClassData = document.getElementById("data");
 const joinBtn = document.getElementById("joinBtn");
 const table = document.getElementById("table");
+const timeTable = document.getElementById("timeTable");
+
+let classData = JSON.parse(localStorage.getItem("lectureData"));
+if (!classData) {
+  localStorage.setItem("lectureData", JSON.stringify([]));
+}
+checkLocalStorage();
+function checkLocalStorage() {
+  if (JSON.parse(localStorage.getItem("lectureData")).length <= 35) {
+    document.getElementById("mainContent").style.display = "none";
+  } else {
+    document.getElementById("form").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+    try {
+      onload = updateInfoTable();
+    } catch (error) {
+      console.log(error);
+    }
+    showTimeTable();
+  }
+}
+console.table(classData);
+
+function getLink() {
+  let lectureNo = getLectureNumber();
+  location.replace("https://meet.google.com/" + classData[lectureNo].lectureID)
+}
+setInterval(updateInfoTable, 120 * 1000);
+
 joinBtn.addEventListener("click", getLink);
-onload = updateTable();
-setInterval(updateTable,5000);
+function getLectureNumber() {
+  let timeStamp = new Date();
+  let hr = timeStamp.getHours();
+  let min = timeStamp.getMinutes();
+  let day = timeStamp.getDay() - 1;
+  let timeInMinutes = hr * 60 + min;
+  let classNumber = null;
+  if (timeInMinutes >= 990) {
+    classNumber = "noClass";
+  } else if (timeInMinutes >= 930) {
+    classNumber = 5;
+  } else if (timeInMinutes >= 870) {
+    classNumber = 4;
+  } else if (timeInMinutes >= 855) {
+    classNumber = "break";
+  } else if (timeInMinutes >= 795) {
+    classNumber = 3;
+  } else if (timeInMinutes >= 735) {
+    classNumber = 2;
+  } else if (timeInMinutes >= 690) {
+    classNumber = "break"; //break time
+  } else if (timeInMinutes >= 630) {
+    classNumber = 1;
+  } else if (timeInMinutes >= 570) {
+    classNumber = 0;
+  } else {
+    return "noClass";
+  }
+
+  if (typeof classNumber == "string") {
+    return classNumber;
+  } else {
+    return day * 6 + classNumber;
+  }
+}
+
+function validate() {
+  if (LectureNameInput.value.length < 3 || LectureNameInput.value.length > 9) {
+    console.log("Input size must be greater than 2 and less than 10");
+    return;
+  }
+  if (TeacherNameInput.value.length < 3 || TeacherNameInput.value.length > 15) {
+    console.log("Teacher name size must be greater than 2 and less than 16");
+    return;
+  }
+  if (LectureIdInput.value.length != 10) {
+    console.log("ID size must be equal to 10");
+    return;
+  }
+  addToLS(LectureNameInput.value, TeacherNameInput.value, LectureIdInput.value);
+}
+
+function addToLS(subject, teacherName, lectureID) {
+  console.log("addToLS");
+  if (classData.length > 35) {
+    console.log("create new data set");
+  } else {
+    let classDetail = {
+      subjectName: subject,
+      teacherName: teacherName,
+      lectureID: lectureID,
+    };
+    LectureNameInput.value = "";
+    TeacherNameInput.value = "";
+    LectureIdInput.value = "";
+    classData.push(classDetail);
+    localStorage.setItem("lectureData", JSON.stringify(classData));
+  }
+  checkLocalStorage();
+}
+
+function updateInfoTable() {
+  let lectureNo = getLectureNumber();
+  if (typeof lectureNo == "string") {
+    table.style.display = "none";
+    joinBtn.style.display = "none";
+    noClassDiv.style.display = "block";
+    if (lectureNo == "break") {
+      noClassData.innerText = "Its break";
+    } else {
+      noClassData.innerText = "No class right now!!";
+    }
+  } else {
+    console.log(lectureNo);
+    teacherNameCell.innerText = classData[lectureNo].teacherName.toUpperCase();
+    lectureNameCell.innerText = classData[lectureNo].subjectName.toUpperCase();
+    nextLectureCell.innerText =
+      classData[lectureNo + 1].subjectName.toUpperCase();
+  }
+}
+
+function showTimeTable() {
+  
+  let days = ["MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  let lectureNo = getLectureNumber();
+
+  for (let i = 0; i < 6; i++) {
+    let tr = document.createElement("tr");
+    let td = document.createElement("td");
+    tr.appendChild(td);
+    td.innerHTML = days[i];
+    td.style.backgroundColor = "#e98074";
+    td.style.color = "#eae7dc";
+    td.style.borderBottom ="2px solid #eae7dc";
+    td.style.borderRight ="2px solid #8e8d8a" ;
+    for (let j = 0; j < 6; j++) {
+      let td = document.createElement("td");
+      tr.appendChild(td);
+      if (typeof lectureNo != "string") {
+        if (lectureNo == i*6+j) {
+          td.style.backgroundColor = "#e85a4f";
+        }
+        else if(i*6>=lectureNo-(lectureNo%6) && i*6+j<=lectureNo){
+          td.style.backgroundColor = "rgb(232 90 79 / 51%)";
+        }
+      }
+      td.innerHTML = classData[i * 6 + j].subjectName.toUpperCase();
+      td.style.borderRight ="2px solid #8e8d8a";
+    }
+    timeTable.appendChild(tr);
+  }
+}
+console.log('Upcoming update will bring json data entry support for faster data entry');
