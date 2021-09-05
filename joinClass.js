@@ -160,4 +160,11 @@ function showTimeTable() {
     timeTable.appendChild(tr);
   }
 }
+function resetData() {
+  let result = confirm("Are you sure you want to delete data. This can't be reverted");
+  if (result) {
+    localStorage.clear();
+    location.reload();
+  }
+}
 console.log('Upcoming update will bring json data entry support for faster data entry');
